@@ -118,7 +118,7 @@ export default function Home() {
           SOBRE MIM
         </h2>
 
-          <p className="text-2xl text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-2xl mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
             Atualmente curso Engenharia de Software na Universidade de Brasília (UnB) e estou construindo minha
             trajetória profissional. 
             Já participei de empresa junior Eng Net onde atuei como acessor de comercial e como gerente de projetos, e 
@@ -136,22 +136,90 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-6 lg:flex lg:items-center lg:gap-16">
+      <section className="relative py-10 bg-gradient-to-br from-[#1b1b1d] via-[#1b1b1d] to-[#1b1b1d]">
+        <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
 
-          {/* IMAGEM */}
-          <div className="flex justify-center w-full mt-8 lg:mt-0 lg:w-1/2">
-            <div className="overflow-hidden transition duration-500">
+          {/* IMAGENS - ESQUERDA */}
+          <div className="lg:w-1/2 relative min-h-[500px] mb-16 lg:mb-0">
+
+            {/* IMAGEM PRINCIPAL */}
+            <div className="absolute left-40 rotate-[-8deg] z-20 overflow-hidden rounded-2xl">
               <Image
-                src="/serpro-predio1.png"
-                alt="Breno Fernandes"
-                width={500}
-                height={500}
-                className="object-cover transition duration-500 hover:scale-115"
+                src="/engnet5.png"
+                alt="Projeto EngNet"
+                width={420}
+                height={320}
+                className="transition duration-500 ease-in-out hover:scale-105"
               />
             </div>
+
+            {/* IMAGEM SUPERIOR */}
+            <div className="absolute left-4 top-10 rotate-[-8deg] z-10 overflow-hidden rounded-2xl">
+              <Image
+                src="/engnet7.png"
+                alt="Reunião EngNet"
+                width={300}
+                height={150}
+                className="transition duration-500 ease-in-out hover:scale-105"
+              />
+            </div>
+
+            {/* IMAGEM INFERIOR */}
+            <div className="absolute left-60 top-36 rotate-[8deg] z-0 overflow-hidden rounded-2xl">
+              <Image
+                src="/engnet6.png"
+                alt="Equipe EngNet"
+                width={280}
+                height={210}
+                className="transition duration-500 ease-in-out hover:scale-105"
+              />
+            </div>
+
           </div>
-          
+
+          {/* TEXTO - DIREITA */}
+          <div className="lg:w-1/2 text-white">
+            <h2 className={`${bebas.className} text-5xl tracking-widest mb-6`}>
+              EngNet Consultoria
+            </h2>
+
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              Atuei como desenvolvedor e gerente de projetos na empresa júnior da UnB,
+              liderando iniciativas estratégicas e técnicas voltadas para integração de sistemas
+              e estruturação de APIs.
+            </p>
+
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              Fui responsável pela integração entre Stays e Jestor,
+              garantindo sincronização eficiente de dados e padronização
+              da comunicação entre plataformas.
+            </p>
+
+            <div className="grid grid-cols-2 gap-6 mt-8">
+              <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm border border-white/10">
+                <h3 className="text-2xl font-bold text-blue-400">Node.js</h3>
+                <p className="text-sm text-gray-400 mt-2">
+                  Desenvolvimento de APIs RESTful
+                </p>
+              </div>
+
+              <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm border border-white/10">
+                <h3 className="text-2xl font-bold text-blue-400">Prisma ORM</h3>
+                <p className="text-sm text-gray-400 mt-2">
+                  Modelagem e integração com PostgreSQL
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div className="h-22 bg-gradient-to-b from-[#1b1b1d] to-[#1b1b1d]"></div>
+
+      <section className="relative py-10 bg-gradient-to-b from-[#1b1b1d] via-[#111827] to-[#111827]">
+        <div className="container mx-auto px-6 lg:flex lg:items-center lg:gap-16">
+
           {/* TEXTO */}
           <div className="lg:w-1/2">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -175,6 +243,19 @@ export default function Home() {
               sistemas, organização de código e desenvolvimento orientado a
               boas práticas.
             </p>
+          </div>
+
+          {/* IMAGEM */}
+          <div className="flex justify-center w-full mt-8 lg:mt-0 lg:w-1/2">
+            <div className="overflow-hidden transition duration-500">
+              <Image
+                src="/serpro-predio1.png"
+                alt="Breno Fernandes"
+                width={500}
+                height={500}
+                className="object-cover transition duration-500 hover:scale-115"
+              />
+            </div>
           </div>
         </div>
       </section>

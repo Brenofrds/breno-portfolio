@@ -136,45 +136,44 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-10 bg-gradient-to-br from-[#1b1b1d] via-[#1b1b1d] to-[#1b1b1d]">
+      <section className="relative py-10 bg-gradient-to-b from-[#1b1b1d] via-[#111827] to-[#111827]">
         <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
 
-          {/* IMAGENS - ESQUERDA */}
-          <div className="lg:w-1/2 relative min-h-[500px] mb-16 lg:mb-0">
+          <div className="lg:w-1/2 relative flex items-center justify-center py-10 lg:py-20">
 
-            {/* IMAGEM PRINCIPAL */}
-            <div className="absolute left-40 rotate-[-8deg] z-20 overflow-hidden rounded-2xl">
-              <Image
-                src="/engnet5.png"
-                alt="Projeto EngNet"
-                width={420}
-                height={320}
-                className="transition duration-500 ease-in-out hover:scale-105"
-              />
+            <div className="relative">
+
+              <div className="relative z-20 lg:rotate-[-8deg] lg:-translate-x-5 lg:-translate-y-40">
+                <Image
+                  src="/engnet5.png"
+                  alt="Projeto EngNet"
+                  width={500}
+                  height={320}
+                  className="rounded-2xl transition duration-500 hover:scale-105"
+                />
+              </div>
+
+              <div className="hidden lg:block absolute -left-20 -top-5 rotate-[-20deg] z-10">
+                <Image
+                  src="/engnet7.png"
+                  alt="Reunião EngNet"
+                  width={350}
+                  height={150}
+                  className="rounded-2xl transition duration-500 hover:scale-105"
+                />
+              </div>
+
+              <div className="hidden lg:block absolute right-[-10px] bottom-[-150px] rotate-[15deg] z-0">
+                <Image
+                  src="/engnet6.png"
+                  alt="Equipe EngNet"
+                  width={350}
+                  height={210}
+                  className="rounded-2xl transition duration-500 hover:scale-105"
+                />
+              </div>
+
             </div>
-
-            {/* IMAGEM SUPERIOR */}
-            <div className="absolute left-4 top-10 rotate-[-8deg] z-10 overflow-hidden rounded-2xl">
-              <Image
-                src="/engnet7.png"
-                alt="Reunião EngNet"
-                width={300}
-                height={150}
-                className="transition duration-500 ease-in-out hover:scale-105"
-              />
-            </div>
-
-            {/* IMAGEM INFERIOR */}
-            <div className="absolute left-60 top-36 rotate-[8deg] z-0 overflow-hidden rounded-2xl">
-              <Image
-                src="/engnet6.png"
-                alt="Equipe EngNet"
-                width={280}
-                height={210}
-                className="transition duration-500 ease-in-out hover:scale-105"
-              />
-            </div>
-
           </div>
 
           {/* TEXTO - DIREITA */}
@@ -184,40 +183,34 @@ export default function Home() {
             </h2>
 
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              Atuei como desenvolvedor e gerente de projetos na empresa júnior da UnB,
-              liderando iniciativas estratégicas e técnicas voltadas para integração de sistemas
-              e estruturação de APIs.
+              Iniciei minha trajetória na EngNet atuando na área comercial, participando
+              da construção de estratégias de prospecção ativa e passiva e contribuindo
+              diretamente no fechamento de projetos.
             </p>
 
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              Fui responsável pela integração entre Stays e Jestor,
-              garantindo sincronização eficiente de dados e padronização
-              da comunicação entre plataformas.
+              Posteriormente, atuei junto aos clientes no levantamento de requisitos,
+              alinhamento de escopo e acompanhamento das entregas, assumindo também a
+              responsabilidade pela gestão e desenvolvimento de projetos.
             </p>
 
-            <div className="grid grid-cols-2 gap-6 mt-8">
-              <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm border border-white/10">
-                <h3 className="text-2xl font-bold text-blue-400">Node.js</h3>
-                <p className="text-sm text-gray-400 mt-2">
-                  Desenvolvimento de APIs RESTful
-                </p>
-              </div>
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              Um dos principais desafios foi a liderança e desenvolvimento de uma API
+              de integração entre Stays e Jestor, construída do zero. O projeto envolveu
+              múltiplas regras de negócio, modelagem de dados e evolução constante de
+              escopo, exigindo organização, comunicação transparente com o cliente e
+              capacidade de adaptação.
+            </p>
 
-              <div className="bg-white/5 p-6 rounded-xl backdrop-blur-sm border border-white/10">
-                <h3 className="text-2xl font-bold text-blue-400">Prisma ORM</h3>
-                <p className="text-sm text-gray-400 mt-2">
-                  Modelagem e integração com PostgreSQL
-                </p>
-              </div>
-            </div>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              A experiência marcou meu primeiro ciclo como gerente de projeto,
+              consolidando minha visão técnica e de negócios dentro de um mesmo desafio.
+            </p>
           </div>
-
         </div>
       </section>
 
-      <div className="h-22 bg-gradient-to-b from-[#1b1b1d] to-[#1b1b1d]"></div>
-
-      <section className="relative py-10 bg-gradient-to-b from-[#1b1b1d] via-[#111827] to-[#111827]">
+      <section className="relative py-10 bg-gradient-to-b from-[#111827] via-[#111827] to-[#111827]">
         <div className="container mx-auto px-6 lg:flex lg:items-center lg:gap-16">
 
           {/* TEXTO */}

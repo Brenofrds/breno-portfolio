@@ -31,7 +31,16 @@ import {
   SiPostman,
   SiSwagger
 } from "react-icons/si";
-import { Project } from "next/dist/build/swc/types";
+
+type Project = {
+  id: number
+  name: string
+  image: string
+  description: string
+  tech: string[]
+  github: string
+  slug?: string
+}
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,7 +91,7 @@ export default function Home() {
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       name: "MicroData",

@@ -1,10 +1,37 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { FaGithub, FaLinkedin, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { bebas } from "./fonts";
+import Link from "next/link";
+
+import useEmblaCarousel from "embla-carousel-react";
+import {
+  SiPhp,
+  SiJavascript,
+  SiTypescript,
+  SiOpenjdk,
+  SiPython,
+  SiReact,
+  SiNextdotjs,
+  SiVuedotjs,
+  SiLaravel,
+  SiNodedotjs,
+  SiDjango,
+  SiPrisma,
+  SiMysql,
+  SiPostgresql,
+  SiMongodb,
+  SiDocker,
+  SiGit,
+  SiGithub,
+  SiGitlab,
+  SiPostman,
+  SiSwagger
+} from "react-icons/si";
+import { Project } from "next/dist/build/swc/types";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +43,77 @@ export default function Home() {
   const [showMore, setShowMore] = useState(false);
 
   const [showMoreSerpro, setShowMoreSerpro] = useState(false);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+  });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const techs = [
+    // Experiência Profissional
+    { name: "PHP", level: "Experiência Profissional", Icon: SiPhp, color: "text-indigo-400" },
+    { name: "Laravel", level: "Experiência Profissional", Icon: SiLaravel, color: "text-red-500" },
+    { name: "JavaScript", level: "Experiência Profissional", Icon: SiJavascript, color: "text-yellow-400" },
+    { name: "Node.js", level: "Experiência Profissional", Icon: SiNodedotjs, color: "text-green-500" },
+    { name: "MySQL", level: "Experiência Profissional", Icon: SiMysql, color: "text-blue-400" },
+    { name: "PostgreSQL", level: "Experiência Profissional", Icon: SiPostgresql, color: "text-blue-500" },
+    { name: "Docker", level: "Experiência Profissional", Icon: SiDocker, color: "text-blue-300" },
+    { name: "Git", level: "Experiência Profissional", Icon: SiGit, color: "text-orange-500" },
+    { name: "GitHub", level: "Experiência Profissional", Icon: SiGithub, color: "text-white" },
+
+    // Projetos Acadêmicos
+    { name: "React", level: "Projetos Acadêmicos", Icon: SiReact, color: "text-cyan-400" },
+    { name: "Vue.js", level: "Projetos Acadêmicos", Icon: SiVuedotjs, color: "text-green-400" },
+    { name: "Java", level: "Projetos Acadêmicos", Icon: SiOpenjdk, color: "text-red-400" },
+
+    // Projetos e Estudos
+    { name: "TypeScript", level: "Projetos e Estudos", Icon: SiTypescript, color: "text-blue-500" },
+    { name: "Next.js", level: "Projetos e Estudos", Icon: SiNextdotjs, color: "text-white" },
+    { name: "Django", level: "Projetos e Estudos", Icon: SiDjango, color: "text-green-600" },
+  ];
+
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const projects = [
+    {
+      id: 1,
+      name: "MicroData",
+      image: "/microdata.png",
+      description:
+        "Sistema para monitoramento de microrganismos...",
+      tech: ["React", "Node.js", "Prisma", "PostgreSQL"],
+      github: "https://github.com/...",
+      // não tem página dedicada
+    },
+    {
+      id: 2,
+      name: "Concurso Fácil",
+      image: "/concursofacil.png",
+      description:
+        "Plataforma desenvolvida para auxiliar candidatos na organização e preparação para concursos públicos. O sistema permite gerenciamento de disciplinas, controle de progresso, acompanhamento de desempenho e organização de estudos com base em regras de priorização e metas definidas pelo usuário.",
+      tech: ["Laravel", "React", "MySQL"],
+      github: "https://github.com/...",
+      slug: "concurso-facil", // 🔥 só esse tem página dedicada
+    },
+    {
+      id: 3,
+      name: "UnB na Mão",
+      image: "/unbnamao.png",
+      description:
+        "Plataforma desenvolvida para auxiliar candidatos na organização e preparação para concursos públicos. O sistema permite gerenciamento de disciplinas, controle de progresso, acompanhamento de desempenho e organização de estudos com base em regras de priorização e metas definidas pelo usuário.",
+      tech: ["Laravel", "React", "MySQL"],
+      github: "https://github.com/...",
+      slug: "concurso-facil", // 🔥 só esse tem página dedicada
+    },
+  ];
 
   useEffect(() => {
     const words = textRef.current?.querySelectorAll("span");
@@ -191,7 +289,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-20 bg-gradient-to-b from-[#1b1b1d] via-[#0e1a2f] to-[#061226]">
+      <section className="relative py-20 bg-gradient-to-b from-[#1b1b1d] via-[#0e1a2f] to-[#0e1a2f]">
         <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
 
           <div className="lg:w-1/2 relative flex items-center justify-center py-10 lg:py-20">
@@ -285,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative bg-gradient-to-b from-[#061226] via-[#0e1a2f] to-[#1b1b1d]">
+      <section className="relative bg-gradient-to-b from-[#0e1a2f] via-[#0e1a2f] to-[#0e1a2f]">
         <div className="container mx-auto px-6 flex flex-col lg:flex-row lg:items-center lg:gap-16">
 
           {/* TEXTO */}
@@ -354,35 +452,233 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-5 bg-[#111827] bg-[url('/stars.png')] bg-repeat">
-        <div className="container mx-auto px-6 max-w-7xl text-center">
+      <section className="bg-[#0b1120] py-24">
+        <div className="container mx-auto px-6 text-center relative">
+
+          <h2 className={`${bebas.className} text-5xl tracking-widest text-white text-center mb-20`}>
+            Tecnologias
+          </h2>
           
-          <h2
-            className={`${bebas.className} hover-underline text-6xl tracking-widest text-gray-900 text-white`}
-          >
-            Habilidades
+
+          <div className="relative max-w-8xl mx-auto">
+
+            {/* Seta Esquerda */}
+            <button
+              onClick={scrollPrev}
+              className="absolute -left-6 top-1/2 -translate-y-1/2 p-3 rounded-full transition duration-300 hover:bg-white/20"
+            >
+              <FaChevronLeft className="text-white" />
+            </button>
+
+            {/* Seta Direita */}
+            <button
+              onClick={scrollNext}
+              className="absolute -right-6 top-1/2 -translate-y-1/2 p-3 rounded-full transition duration-300 hover:bg-white/20"
+            >
+              <FaChevronRight className="text-white" />
+            </button>
+
+            {/* Carousel */}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {techs.map(({ name, level, Icon, color }, index) => (
+                  <div
+                    key={index}
+                    className="flex-[0_0_33%] md:flex-[0_0_20%] flex flex-col items-center justify-center p-6 text-center"
+                  >
+                    <Icon
+                      size={60}
+                      className={`${color} transition duration-300 hover:scale-110`}
+                    />
+
+                    <span className="mt-3 text-sm text-white font-medium">
+                      {name}
+                    </span>
+
+                    <span className="text-xs text-gray-400">
+                      {level}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#0e1628] py-28">
+        <div className="container mx-auto px-6">
+          <h2 className={`${bebas.className} text-5xl tracking-widest text-white text-center mb-20`}>
+            Projetos
           </h2>
 
-          <p className="text-lg sm:text-xl lg:text-2xl mt-3 text-gray-600 dark:text-gray-300 leading-relaxed">
-            Atualmente curso Engenharia de Software na Universidade de Brasília (UnB) e estou construindo minha
-            trajetória profissional. 
-            Já participei de empresa junior EngNet Consultoria onde atuei como acessor de comercial e como gerente de dois projetos, e 
-            atualmente sou estagiário de desenvolvimento no Serviço Federal de Processamento de Dados (Serpro).
-          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                onClick={() => setSelectedProject(project)}
+                className="bg-[#111827] rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition duration-300 shadow-lg"
+              >
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-52 object-cover"
+                />
 
-          <p className="text-lg sm:text-xl lg:text-2xl mt-3 text-gray-600 dark:text-gray-300 leading-relaxed">
-            No inglês, possuo conhecimento em nível intermediário, certificado pelo Ingles 200 horas.
-          </p>
+                <div className="p-6">
+                  <h3 className="text-white text-xl font-semibold">
+                    {project.name}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <p className="text-lg sm:text-xl lg:text-2xl mt-3 text-gray-600 dark:text-gray-300 leading-relaxed">
-            Busco uma oportunidade na área para continuar aprendendo, crescer profissionalmente e contribuir de forma prática como desenvolvedor.
-          </p>
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-[#111827] w-[90%] md:w-[1100px] rounded-xl p-8 relative flex flex-col max-h-[90vh]">
+            
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 text-white text-xl"
+            >
+              ✕
+            </button>
 
+            <h3 className="text-2xl text-white mb-4">
+              {selectedProject.name}
+            </h3>
+
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.name}
+              className="w-full rounded-lg mb-6"
+            />
+
+            <p className="text-gray-300 mb-6">
+              {selectedProject.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {selectedProject.tech.map((t, index) => (
+                <span
+                  key={index}
+                  className="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="border-t border-gray-700 mt-auto pt-6 flex justify-end gap-4">
+              {selectedProject.github && (
+                <a
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 text-blue-400 border border-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition"
+                >
+                  Ver no GitHub
+                </a>
+              )}
+
+              {selectedProject.slug && (
+                <Link
+                  href={`/${selectedProject.slug}`}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                >
+                  Ir para página do projeto
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <section className="bg-gradient-to-b from-[#0e1a2f] to-[#0b1120] py-28">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto bg-[#111827] rounded-2xl p-10 shadow-2xl">
+
+            {/* LADO ESQUERDO */}
+            <div>
+              <h2 className={`${bebas.className} text-5xl tracking-widest text-white mb-6`}>
+                Vamos conversar?
+              </h2>
+
+              <p className="text-gray-400 mt-6 leading-relaxed">
+                Estou aberto a novas oportunidades e projetos desafiadores.
+                Se você quer trocar uma ideia ou discutir uma proposta,
+                fico à disposição.
+              </p>
+
+              {/* EMAIL */}
+              <div className="mt-12">
+                <h3 className="text-white font-semibold mb-4">Email</h3>
+                <div className="flex items-center gap-4 bg-[#1f2937] p-4 rounded-lg">
+                  <div className="h-10 w-10 bg-blue-600/20 rounded-full flex items-center justify-center">
+                    📧
+                  </div>
+                  <div>
+                    <span className="block text-gray-400 text-sm">Envie um email</span>
+                    <span className="text-blue-400 font-medium">
+                      seuemail@email.com
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* REDES */}
+              <div className="mt-12">
+                <h3 className="text-white font-semibold mb-4">Redes</h3>
+                <div className="flex gap-4">
+                  <a className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                    <span className="text-white">in</span>
+                  </a>
+                  <a className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                    <span className="text-white">gh</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* FORMULÁRIO */}
+            <form className="space-y-5">
+              <input
+                type="text"
+                placeholder="Nome"
+                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
+              />
+
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
+              />
+
+              <input
+                type="text"
+                placeholder="Assunto"
+                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
+              />
+
+              <textarea
+                rows={5}
+                placeholder="Mensagem"
+                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
+              />
+
+              <button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold text-white"
+              >
+                Enviar mensagem
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </>
-
-
-    
   );
 }

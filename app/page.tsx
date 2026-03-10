@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { FaGithub, FaLinkedin, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaChevronLeft, FaChevronRight, FaInstagram, FaFileAlt, FaWhatsapp } from "react-icons/fa";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { bebas } from "./fonts";
@@ -252,6 +252,15 @@ export default function Home() {
                   className="text-gray-300 hover:text-blue-400 transition duration-300"
                 >
                   <FaLinkedin size={28} />
+                </a>
+                <a
+                  href="/CurrículoBrenoFernandes.pdf"
+                  target="_blank"
+                  download
+                  title="Baixar currículo"
+                  className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition"
+                >
+                  <FaFileAlt className="text-white" />
                 </a>
               </div>
             </div>
@@ -515,7 +524,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#0e1628] py-28">
+      <section className="bg-gradient-to-b from-[#0e1628] to-[#0e1a2f] py-28">
         <div className="container mx-auto px-6">
           <h2 className={`${bebas.className} text-5xl tracking-widest text-white text-center mb-20`}>
             Projetos
@@ -606,12 +615,14 @@ export default function Home() {
         </div>
       )}
 
+      
+
       <section className="bg-gradient-to-b from-[#0e1a2f] to-[#0b1120] py-28">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto bg-[#111827] rounded-2xl p-10 shadow-2xl">
+          <div className="grid lg:grid-cols-2 gap-20 max-w-6xl mx-auto items-center bg-[#111827] rounded-2xl">
 
             {/* LADO ESQUERDO */}
-            <div>
+            <div className="p-10">
               <h2 className={`${bebas.className} text-5xl tracking-widest text-white mb-6`}>
                 Vamos conversar?
               </h2>
@@ -625,66 +636,121 @@ export default function Home() {
               {/* EMAIL */}
               <div className="mt-12">
                 <h3 className="text-white font-semibold mb-4">Email</h3>
-                <div className="flex items-center gap-4 bg-[#1f2937] p-4 rounded-lg">
-                  <div className="h-10 w-10 bg-blue-600/20 rounded-full flex items-center justify-center">
-                    📧
+
+                <div className="flex items-center gap-4">
+
+                  <div className="h-10 w-10 rounded-full overflow-hidden">
+                    <Image
+                      src="/FotoEmail.jpg"
+                      alt="Email"
+                      width={40}
+                      height={40}
+                      className="object-cover hover:scale-110 transition"
+                    />
                   </div>
+
                   <div>
-                    <span className="block text-gray-400 text-sm">Envie um email</span>
-                    <span className="text-blue-400 font-medium">
-                      seuemail@email.com
+                    <span className="block text-gray-400 text-sm">
+                      Envie um email
                     </span>
+
+                    <a
+                      href="mailto:brenofernandes8383@gmail.com"
+                      className="text-blue-400 hover:text-blue-300 transition font-medium"
+                    >
+                      brenofernandes8383@gmail.com
+                    </a>
                   </div>
+
                 </div>
+              </div>
+
+              {/* WHATSAPP */}
+              <div className="mt-10">
+
+                <h3 className="text-white font-semibold mb-2">
+                  WhatsApp
+                </h3>
+
+                <p className="text-gray-400 text-sm mb-4">
+                  Prefere um contato mais rápido?
+                </p>
+
+                <a
+                  href="https://wa.me/5561996158418?text=Olá%20Breno,%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar."
+                  target="_blank"
+                  className="flex items-center gap-3 border border-blue-500 text-blue-400 hover:bg-blue-500/10 transition px-6 py-3 rounded-lg font-semibold w-fit"
+                >
+                  <FaWhatsapp size={20} />
+                  Iniciar conversa
+                </a>
+
+                <span className="text-gray-500 text-sm block mt-3">
+                  Normalmente respondo em poucas horas
+                </span>
+
               </div>
 
               {/* REDES */}
-              <div className="mt-12">
-                <h3 className="text-white font-semibold mb-4">Redes</h3>
+              <div className="mt-10">
+
+                <h3 className="text-white font-semibold mb-4">
+                  Redes
+                </h3>
+
                 <div className="flex gap-4">
-                  <a className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition">
-                    <span className="text-white">in</span>
+
+                  <a
+                    href="https://www.linkedin.com/in/breno-fernandes-594a34231"
+                    target="_blank"
+                    className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition"
+                  >
+                    <FaLinkedin className="text-white" />
                   </a>
-                  <a className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition">
-                    <span className="text-white">gh</span>
+
+                  <a
+                    href="https://github.com/Brenofrds"
+                    target="_blank"
+                    className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition"
+                  >
+                    <FaGithub className="text-white" />
                   </a>
+
+                  <a
+                    href="https://www.instagram.com/brenofrds_/"
+                    target="_blank"
+                    className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition"
+                  >
+                    <FaInstagram className="text-white" />
+                  </a>
+
+                  <a
+                    href="/CurrículoBrenoFernandes.pdf"
+                    target="_blank"
+                    download
+                    title="Baixar currículo"
+                    className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition"
+                  >
+                    <FaFileAlt className="text-white" />
+                  </a>
+
                 </div>
+
               </div>
+
             </div>
 
-            {/* FORMULÁRIO */}
-            <form className="space-y-5">
-              <input
-                type="text"
-                placeholder="Nome"
-                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
+            {/* LADO DIREITO - IMAGEM */}
+            <div className="relative h-[550px] lg:h-[670px]">
+
+              <Image
+                src="/cafeesetup.jpeg"
+                alt="Workspace"
+                fill
+                className="object-cover rounded-xl"
               />
 
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
-              />
-
-              <input
-                type="text"
-                placeholder="Assunto"
-                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
-              />
-
-              <textarea
-                rows={5}
-                placeholder="Mensagem"
-                className="w-full bg-[#1f2937] text-white rounded-lg py-3 px-4 border border-gray-700 focus:border-blue-500 outline-none transition"
-              />
-
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold text-white"
-              >
-                Enviar mensagem
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </section>

@@ -1,0 +1,49 @@
+"use client"
+
+import { useState } from "react"
+import { bebas } from "@/app/fonts"
+
+import { projects, Project } from "@/data/projects"
+
+import ProjectCard from "./ProjectCard"
+import ProjectModal from "./ProjectModal"
+
+export default function ProjectsGrid() {
+
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  return (
+
+    <section id="projetos" className="bg-gradient-to-b from-[#0e1628] to-[#0e1a2f] py-28">
+
+      <div className="container mx-auto px-6">
+
+        <h2 className={`${bebas.className} text-5xl tracking-widest text-white text-center mb-20`}>
+          Projetos
+        </h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+          {projects.map((project) => (
+
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onClick={setSelectedProject}
+            />
+
+          ))}
+
+        </div>
+
+      </div>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+
+    </section>
+
+  )
+}

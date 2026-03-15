@@ -1,16 +1,58 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
+import { gsap } from "gsap"
 import { bebas } from "@/app/fonts"
 
 export default function EngNet() {
 
   const [showMore, setShowMore] = useState(false)
 
+  const sectionRef = useRef<HTMLElement>(null)
+  const firstImageRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting && firstImageRef.current) {
+
+            gsap.fromTo(
+              firstImageRef.current,
+              { scale: 1 },
+              {
+                scale: 1.15,
+                duration: 0.5,
+                ease: "power2.out",
+                yoyo: true,
+                repeat: 1
+              }
+            )
+
+          }
+
+        })
+
+      },
+      { threshold: 0.6 }
+    )
+
+    if (sectionRef.current) observer.observe(sectionRef.current)
+
+    return () => observer.disconnect()
+
+  }, [])
+
   return (
 
-    <section className="relative py-20 bg-gradient-to-b from-[#1b1b1d] via-[#0e1a2f] to-[#0e1a2f]">
+    <section
+      ref={sectionRef}
+      className="relative py-20 bg-gradient-to-b from-[#1b1b1d] via-[#0e1a2f] to-[#0e1a2f]"
+    >
 
       <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
 
@@ -20,7 +62,10 @@ export default function EngNet() {
 
           <div className="relative">
 
-            <div className="relative z-20 lg:rotate-[-8deg] lg:-translate-x-5 lg:-translate-y-40">
+            <div
+              ref={firstImageRef}
+              className="relative z-20 lg:rotate-[-8deg] lg:-translate-x-5 lg:-translate-y-40"
+            >
               <Image
                 src="/engnet5.png"
                 alt="Projeto EngNet"
@@ -62,16 +107,12 @@ export default function EngNet() {
             EngNet Consultoria
           </h2>
 
-          {/* INTRODUÇÃO */}
-
           <p className="text-lg text-gray-300 leading-relaxed mb-6">
             Na EngNet Consultoria, vivi uma transição que marcou minha formação:
             comecei entendendo negócios e evoluí para a liderança de projetos técnicos.
             Foi nesse ambiente que desenvolvi visão estratégica, capacidade de execução
             e maturidade para assumir responsabilidades maiores.
           </p>
-
-          {/* TEXTO EXPANDIDO */}
 
           {showMore && (
             <>
@@ -97,8 +138,6 @@ export default function EngNet() {
               </p>
             </>
           )}
-
-          {/* BOTÃO */}
 
           <button
             onClick={() => setShowMore(!showMore)}

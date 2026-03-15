@@ -9,6 +9,8 @@ import { bebas } from "@/app/fonts"
 export default function Hero() {
 
   const textRef = useRef<HTMLHeadingElement>(null)
+  const heroRef = useRef<HTMLElement>(null)
+  const imageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
 
@@ -17,10 +19,7 @@ export default function Hero() {
     if (words) {
       gsap.fromTo(
         words,
-        {
-          opacity: 0,
-          y: 40
-        },
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
@@ -33,9 +32,45 @@ export default function Hero() {
 
   }, [])
 
+  useEffect(() => {
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting && imageRef.current) {
+
+            gsap.fromTo(
+              imageRef.current,
+              { scale: 1},
+              {
+                scale: 1.15,
+                duration: 0.5,
+                ease: "power2.out",
+                yoyo: true,
+                repeat: 1
+              }
+            )
+
+          }
+
+        })
+
+      },
+      { threshold: 0.6 }
+    )
+
+    if (heroRef.current) observer.observe(heroRef.current)
+
+    return () => observer.disconnect()
+
+  }, [])
+
   return (
 
     <header
+      ref={heroRef}
       id="home"
       className="bg-gradient-to-b from-[#061226] via-[#0e1a2f] to-[#1b1b1d] pt-32"
     >
@@ -56,14 +91,9 @@ export default function Hero() {
               {"Seja bem-vindo ao meu portfólio"
                 .split(" ")
                 .map((word, index) => (
-
-                  <span
-                    key={index}
-                    className="inline-block mr-3"
-                  >
+                  <span key={index} className="inline-block mr-3">
                     {word}
                   </span>
-
                 ))}
 
             </h1>
@@ -115,7 +145,10 @@ export default function Hero() {
 
         <div className="flex justify-center w-full mt-8 lg:mt-0 lg:w-1/2">
 
-          <div className="overflow-hidden transition duration-500">
+          <div
+            ref={imageRef}
+            className="overflow-hidden"
+          >
 
             <Image
               src="/profile3.png"

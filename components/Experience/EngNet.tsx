@@ -26,7 +26,7 @@ export default function EngNet() {
                 alt="Projeto EngNet"
                 width={500}
                 height={320}
-                className="rounded-2xl transition duration-500 hover:scale-105"
+                className="rounded-2xl transition duration-500 hover:scale-125"
               />
             </div>
 
@@ -36,7 +36,7 @@ export default function EngNet() {
                 alt="Reunião EngNet"
                 width={350}
                 height={150}
-                className="rounded-2xl transition duration-500 hover:scale-105"
+                className="rounded-2xl transition duration-500 hover:scale-125"
               />
             </div>
 
@@ -46,7 +46,7 @@ export default function EngNet() {
                 alt="Equipe EngNet"
                 width={350}
                 height={210}
-                className="rounded-2xl transition duration-500 hover:scale-105"
+                className="rounded-2xl transition duration-500 hover:scale-125"
               />
             </div>
 

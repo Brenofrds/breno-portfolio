@@ -10,7 +10,7 @@ export default function Serpro() {
 
   return (
 
-    <section className="relative bg-gradient-to-b from-[#0e1a2f] via-[#0e1a2f] to-[#0e1a2f]">
+    <section className="relative py-12 bg-gradient-to-b from-[#0e1a2f] via-[#0e1a2f] to-[#0e1a2f]">
 
       <div className="container mx-auto px-6 flex flex-col lg:flex-row lg:items-center lg:gap-16">
 
@@ -61,19 +61,48 @@ export default function Serpro() {
 
         </div>
 
-        {/* IMAGEM */}
+        {/* IMAGENS */}
 
-        <div className="order-1 lg:order-2 flex justify-center w-full mt-10 lg:mt-0 lg:w-1/2">
+        <div className="order-1 lg:order-2 lg:w-1/2 relative flex items-center justify-center py-10 lg:py-20">
 
-          <div className="overflow-hidden rounded-2xl">
+          <div className="relative">
 
-            <Image
-              src="/serpro-predio1.png"
-              alt="Serpro"
-              width={500}
-              height={500}
-              className="object-cover transition duration-500 hover:scale-105"
-            />
+            {/* imagem principal (sempre visível) */}
+
+            <div className="relative z-10 lg:rotate-[5deg] lg:translate-x-0 lg:-translate-y-40">
+              <Image
+                src="/serproLogo.png"
+                alt="Serpro prédio"
+                width={500}
+                height={320}
+                className="rounded-2xl transition duration-500 hover:scale-125"
+              />
+            </div>
+
+            {/* imagem secundaria 1 */}
+
+            <div className="hidden lg:block absolute -left-20 -top-10 rotate-[-15deg] z-10">
+              <Image
+                src="/BrenoSerpro.png"
+                alt="Serpro"
+                width={380}
+                height={1320}
+                quality={100}
+                className="rounded-2xl transition duration-500 hover:scale-125 object-contain"
+              />
+            </div>
+
+            {/* imagem secundaria 2 */}
+
+            <div className="hidden lg:block absolute right-[-10px] bottom-[-140px] rotate-[12deg] z-0">
+              <Image
+                src="/serpro-predio1.png"
+                alt="Equipe Serpro"
+                width={350}
+                height={210}
+                className="rounded-2xl transition duration-500 hover:scale-125"
+              />
+            </div>
 
           </div>
 

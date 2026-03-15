@@ -122,7 +122,7 @@ export default function Hero() {
               alt="Breno Fernandes"
               width={500}
               height={500}
-              className="object-cover transition duration-500 hover:scale-105"
+              className="object-cover transition duration-500 hover:scale-115"
             />
 
           </div>

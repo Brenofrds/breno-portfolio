@@ -130,9 +130,9 @@ export default function Hero() {
                 target="_blank"
                 download
                 title="Baixar currículo"
-                className="h-10 w-10 bg-[#1f2937] hover:bg-blue-600 rounded-full flex items-center justify-center transition"
+                className="text-gray-300 hover:text-blue-400 transition duration-300"
               >
-                <FaFileAlt className="text-white" />
+                <FaFileAlt size={28} />
               </a>
 
             </div>

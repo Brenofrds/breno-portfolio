@@ -15,7 +15,7 @@ export default function ProjectModal({ project, onClose }: Props) {
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
 
-      <div className="bg-[#111827] w-[90%] md:w-[1100px] rounded-xl p-8 relative flex flex-col max-h-[90vh]">
+      <div className="bg-[#111827] w-[95%] max-w-4xl rounded-xl p-6 md:p-8 relative flex flex-col max-h-[90vh] overflow-hidden">
 
         <button
           onClick={onClose}
@@ -28,26 +28,27 @@ export default function ProjectModal({ project, onClose }: Props) {
           {project.name}
         </h3>
 
-        <img
-          src={project.image}
-          alt={project.name}
-          className="w-full rounded-lg mb-6"
-        />
+        <div className="overflow-y-auto pr-2 custom-scroll">
 
-        <p className="text-gray-300 mb-6">
-          {project.description}
-        </p>
+            <img
+              src={project.image}
+              alt={project.name}
+              className="w-full rounded-lg mb-6"
+            />
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((t, index) => (
-            <span
-              key={index}
-              className="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
+            <p className="text-gray-300 mb-6">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tech.map((t, index) => (
+                <span key={index} className="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+          </div>
 
         <div className="border-t border-gray-700 mt-auto pt-6 flex justify-end gap-4">
 

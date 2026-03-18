@@ -46,7 +46,7 @@ export default function Hero() {
               { scale: 1},
               {
                 scale: 1.15,
-                duration: 0.5,
+                duration: 0.9,
                 ease: "power2.out",
                 yoyo: true,
                 repeat: 1

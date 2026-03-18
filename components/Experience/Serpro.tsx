@@ -116,7 +116,7 @@ export default function Serpro() {
               className="relative z-20 lg:rotate-[5deg] lg:translate-x-0 lg:-translate-y-40"
             >
               <Image
-                src="/serproLogo.png"
+                src="/serpro-logo.png"
                 alt="Serpro prédio"
                 width={500}
                 height={320}

@@ -30,25 +30,28 @@ export default function ProjectModal({ project, onClose }: Props) {
 
         <div className="overflow-y-auto pr-2 custom-scroll">
 
-            <img
-              src={project.image}
-              alt={project.name}
-              className="w-full rounded-lg mb-6"
-            />
+          <img
+            src={project.image}
+            alt={project.name}
+            className="w-full rounded-lg mb-6"
+          />
 
-            <p className="text-gray-300 mb-6">
-              {project.description}
-            </p>
+          <p className="text-gray-300 mb-6">
+            {project.description}
+          </p>
 
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tech.map((t, index) => (
-                <span key={index} className="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm">
-                  {t}
-                </span>
-              ))}
-            </div>
-
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tech.map((t, index) => (
+              <span
+                key={index}
+                className="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm"
+              >
+                {t}
+              </span>
+            ))}
           </div>
+
+        </div>
 
         <div className="border-t border-gray-700 mt-auto pt-6 flex justify-end gap-4">
 
@@ -56,15 +59,16 @@ export default function ProjectModal({ project, onClose }: Props) {
             <a
               href={project.github}
               target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 text-blue-400 border border-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition"
             >
               Ver no GitHub
             </a>
           )}
 
-          {project.slug && (
+          {project.hasPage && project.href && (
             <Link
-              href={`/${project.slug}`}
+              href={project.href}
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
             >
               Ir para página do projeto

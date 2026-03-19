@@ -4,8 +4,10 @@ export type Project = {
   image: string
   description: string
   tech: string[]
-  github: string
-  slug?: string
+
+  github?: string
+  hasPage?: boolean
+  href?: string
 }
 
 export const projects: Project[] = [
@@ -24,8 +26,8 @@ export const projects: Project[] = [
     description:
       "Plataforma desenvolvida para auxiliar candidatos na organização e preparação para concursos públicos.",
     tech: ["Laravel", "React", "MySQL"],
-    github: "https://github.com/...",
-    slug: "concurso-facil"
+    hasPage: true,
+    href: "/projetos/concurso-facil"
   },
   {
     id: 3,

@@ -10,29 +10,72 @@ export default function ConcursoFacilPage() {
       <Navbar />
 
       {/* HERO DO PROJETO */}
-      <section className="bg-gradient-to-b from-[#061226] via-[#0e1a2f] to-[#0e1a2f] pt-40 pb-20">
+      <section className="relative bg-gradient-to-b from-[#061226] via-[#0e1a2f] to-[#0e1a2f] pt-40 pb-24 overflow-hidden">
 
-        <div className="max-w-5xl mx-auto px-6">
+        {/* GLOW BACKGROUND */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl rounded-full opacity-40" />
+        </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Concurso Fácil
-          </h1>
+        <div className="relative max-w-7xl mx-auto px-6 lg:flex lg:items-center lg:gap-16">
 
-          <p className="text-lg text-gray-300 max-w-3xl">
-            Plataforma completa para organização de estudos para concursos públicos,
-            com arquitetura distribuída, autentação independente e acompanhamento de desempenho.
-          </p>
+          {/* TEXTO */}
+          <div className="lg:w-1/2">
 
-          {/* TAGS */}
-          <div className="flex flex-wrap gap-3 mt-6">
-            {["Laravel", "React", "MySQL"].map((tech) => (
-              <span
-                key={tech}
-                className="bg-blue-600/20 text-blue-400 px-4 py-1 rounded-full"
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Concurso Fácil
+            </h1>
+
+            <p className="text-lg text-gray-300 max-w-xl mb-6">
+              Plataforma completa para organização de estudos para concursos públicos,
+              com arquitetura distribuída, autentação independente e acompanhamento de desempenho.
+            </p>
+
+            {/* TAGS */}
+            <div className="flex flex-wrap gap-3 mb-8">
+              {["Laravel", "React", "MySQL"].map((tech) => (
+                <span
+                  key={tech}
+                  className="bg-blue-600/20 text-blue-400 px-4 py-1 rounded-full"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* BOTÕES */}
+            <div className="flex items-center gap-4">
+
+              <a
+                href="https://github.com/..."
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-md text-sm font-semibold transition"
               >
-                {tech}
-              </span>
-            ))}
+                Ver no GitHub
+              </a>
+
+              <Link
+                href="/"
+                className="text-sm text-gray-300 hover:text-white transition"
+              >
+                Voltar →
+              </Link>
+
+            </div>
+
+          </div>
+
+          {/* IMAGEM */}
+          <div className="lg:w-1/2 mt-12 lg:mt-0 flex justify-center">
+
+            <Image
+              src="/concursofacil3.png"
+              alt="Projeto Concurso Fácil"
+              width={900}
+              height={600}
+              className="rounded-xl shadow-2xl ring-1 ring-white/10"
+            />
+
           </div>
 
         </div>
@@ -43,16 +86,6 @@ export default function ConcursoFacilPage() {
       <main className="bg-[#0e1a2f] text-white px-6 py-16">
 
         <div className="max-w-5xl mx-auto">
-
-          {/* IMAGEM */}
-          <Image
-            src="/concursofacil3.png"
-            alt="Projeto Concurso Fácil"
-            width={1200}
-            height={600}
-            className="rounded-xl mb-10"
-            priority
-          />
 
           {/* MÉTRICAS (MUDA MUITO O NÍVEL) */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -162,6 +195,83 @@ export default function ConcursoFacilPage() {
         </div>
 
       </main>
+
+      {/* HERO DO PROJETO */}
+      <section className="bg-gradient-to-b from-[#061226] via-[#0e1a2f] to-[#0e1a2f] pt-40 pb-20">
+
+        <div className="max-w-7xl mx-auto px-6">
+
+          <div className="relative overflow-hidden bg-[#111827] rounded-3xl px-6 pt-16 lg:px-16 lg:pt-0 lg:flex lg:items-center lg:gap-12">
+
+            {/* GLOW EFFECT */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-3xl rounded-full opacity-40" />
+            </div>
+
+            {/* TEXTO */}
+            <div className="relative z-10 max-w-xl lg:py-24">
+
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Concurso Fácil
+              </h1>
+
+              <p className="text-lg text-gray-300 mb-6">
+                Plataforma completa para organização de estudos para concursos públicos,
+                com arquitetura distribuída, autentação independente e acompanhamento de desempenho.
+              </p>
+
+              {/* TAGS */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {["Laravel", "React", "MySQL"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="bg-blue-600/20 text-blue-400 px-4 py-1 rounded-full"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* BOTÕES */}
+              <div className="flex items-center gap-4">
+
+                <a
+                  href="https://github.com/..."
+                  target="_blank"
+                  className="bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-md text-sm font-semibold transition"
+                >
+                  Ver no GitHub
+                </a>
+
+                <Link
+                  href="/"
+                  className="text-sm text-gray-300 hover:text-white transition"
+                >
+                  Voltar →
+                </Link>
+
+              </div>
+
+            </div>
+
+            {/* IMAGEM */}
+            <div className="relative mt-12 lg:mt-0 lg:h-[500px] flex items-end">
+
+              <Image
+                src="/concursofacil3.png"
+                alt="Projeto Concurso Fácil"
+                width={900}
+                height={600}
+                className="rounded-xl shadow-2xl ring-1 ring-white/10"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
 
       <Contact />
     </>

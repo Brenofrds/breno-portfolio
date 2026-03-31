@@ -76,12 +76,7 @@ export default function ConcursoFacilPage() {
       <main className="bg-[#0e1a2f] text-white px-6 py-16">
         <div className="max-w-5xl mx-auto">
           {/* MÉTRICAS */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-[#13203a] p-6 rounded-xl">
-              <p className="text-3xl font-bold text-blue-400">2</p>
-              <p className="text-gray-300">Aplicações publicadas</p>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
             <div className="bg-[#13203a] p-6 rounded-xl">
               <p className="text-3xl font-bold text-blue-400">4</p>
               <p className="text-gray-300">Repositórios organizados por responsabilidade</p>

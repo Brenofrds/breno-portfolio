@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import Tag from "@/src/components/shared/Tag"
 
 export default function ConcursoFacilPage() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
@@ -29,12 +30,12 @@ export default function ConcursoFacilPage() {
 
             <div className="flex flex-wrap gap-3 mb-8">
               {["Laravel", "Vue", "MySQL"].map((tech) => (
-                <span
+                <Tag
                   key={tech}
                   className="bg-blue-600/20 text-blue-400 px-4 py-1 rounded-full"
                 >
                   {tech}
-                </span>
+                </Tag>
               ))}
             </div>
 

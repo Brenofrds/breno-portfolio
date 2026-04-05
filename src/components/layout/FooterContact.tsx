@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { FaGithub, FaLinkedin, FaInstagram, FaFileAlt, FaWhatsapp } from "react-icons/fa"
-import { bebas } from "@/src/app/fonts"
+import SectionTitle from "@/src/components/shared/SectionTitle"
 
 export default function FooterContact() {
 
@@ -18,9 +18,9 @@ export default function FooterContact() {
 
           <div className="p-10">
 
-            <h2 className={`${bebas.className} text-5xl tracking-widest text-white mb-6`}>
+            <SectionTitle className="text-white mb-6">
               Vamos conversar?
-            </h2>
+            </SectionTitle>
 
             <p className="text-gray-400 mt-6 leading-relaxed">
               Estou aberto a novas oportunidades e projetos desafiadores.

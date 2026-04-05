@@ -3,7 +3,7 @@
 import { useCallback } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
-import { bebas } from "@/src/app/fonts"
+import SectionTitle from "@/src/components/shared/SectionTitle"
 
 import {
   SiPhp,
@@ -65,9 +65,9 @@ export default function TechCarousel() {
 
       <div className="container mx-auto px-6 text-center relative">
 
-        <h2 className={`${bebas.className} text-5xl tracking-widest text-white mb-20`}>
+        <SectionTitle className="text-white mb-20">
           Tecnologias
-        </h2>
+        </SectionTitle>
 
         <div className="relative max-w-7xl mx-auto">
 

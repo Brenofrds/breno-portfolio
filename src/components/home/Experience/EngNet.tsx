@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { gsap } from "gsap"
-import { bebas } from "@/src/app/fonts"
+import SectionTitle from "@/src/components/shared/SectionTitle"
 
 export default function EngNet() {
 
@@ -103,9 +103,9 @@ export default function EngNet() {
 
         <div className="lg:w-1/2 text-white">
 
-          <h2 className={`${bebas.className} text-5xl tracking-widest mb-6`}>
+          <SectionTitle className="mb-6">
             EngNet Consultoria
-          </h2>
+          </SectionTitle>
 
           <p className="text-lg text-gray-300 leading-relaxed mb-6">
             Na EngNet Consultoria, vivi uma transição que marcou minha formação:

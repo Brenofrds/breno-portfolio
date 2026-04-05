@@ -3,6 +3,7 @@
 import { Project } from "@/data/projects"
 import Link from "next/link"
 import Image from "next/image"
+import Tag from "@/src/components/shared/Tag"
 
 type Props = {
   project: Project | null
@@ -55,12 +56,12 @@ export default function ProjectModal({ project, onClose }: Props) {
               {/* TAGS */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {project.tech.map((tech) => (
-                  <span
+                  <Tag
                     key={tech}
                     className="rounded-full bg-blue-600/20 px-4 py-1.5 text-sm font-medium text-blue-400 border border-blue-400/10"
                   >
                     {tech}
-                  </span>
+                  </Tag>
                 ))}
               </div>
 

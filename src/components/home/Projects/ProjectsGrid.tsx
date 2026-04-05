@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { bebas } from "@/src/app/fonts"
 import { projects, Project } from "@/data/projects"
+import SectionTitle from "@/src/components/shared/SectionTitle"
 import ProjectCard from "./ProjectCard"
 import ProjectModal from "./ProjectModal"
 
@@ -24,9 +24,9 @@ export default function ProjectsGrid() {
   return (
     <section id="projetos" className="bg-gradient-to-b from-[#0e1628] to-[#0e1a2f] py-28">
       <div className="container mx-auto px-6">
-        <h2 className={`${bebas.className} text-5xl tracking-widest text-white text-center mb-20`}>
+        <SectionTitle className="text-white text-center mb-20">
           Projetos
-        </h2>
+        </SectionTitle>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project) => (

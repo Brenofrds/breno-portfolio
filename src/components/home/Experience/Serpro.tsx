@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { gsap } from "gsap"
-import { bebas } from "@/src/app/fonts"
+import SectionTitle from "@/src/components/shared/SectionTitle"
 
 export default function Serpro() {
 
@@ -60,9 +60,9 @@ export default function Serpro() {
 
         <div className="order-2 lg:order-1 py-16 lg:w-1/2 text-white mt-10 lg:mt-0">
 
-          <h2 className={`${bebas.className} text-5xl tracking-widest mb-6`}>
+          <SectionTitle className="mb-6">
             Serviço Federal de Processamento de Dados (Serpro)
-          </h2>
+          </SectionTitle>
 
           <p className="text-lg text-gray-300 leading-relaxed mb-6">
             Desde maio de 2024 atuo como estagiário em desenvolvimento no Serpro,

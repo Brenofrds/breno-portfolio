@@ -36,11 +36,6 @@ Portfolio pessoal em frontend unico, construido com Next.js, para apresentar ide
 - Backend: `Estado atual: nao existe neste repositorio`
 - Banco: `Estado atual: nao existe neste repositorio`
 
-**Observacao importante de contexto:**
-
-- o projeto atual **nao esta em Angular**
-- a arquitetura ativa hoje esta migrando para `src/`, mas essa migracao ainda nao terminou por completo
-
 ---
 
 ## 2. Stack e componentes

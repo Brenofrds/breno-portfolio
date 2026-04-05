@@ -21,13 +21,13 @@ Quando faltar informacao, registrar explicitamente:
 
 **Descricao do sistema:**
 
-Portfolio pessoal em frontend unico, construido com Next.js, para apresentar identidade profissional, trajetoria, experiencias, stack tecnica, projetos selecionados e canais de contato do Breno Fernandes. A aplicacao e essencialmente uma landing page com navegacao por secoes, uma pagina dedicada para o projeto "Concurso Facil" e multiplos links externos para curriculo, redes sociais e demonstracao de projeto.
+Portfolio pessoal em frontend unico, construido com Next.js, para apresentar identidade profissional, trajetoria, experiencias, stack tecnica, projetos selecionados e canais de contato do Breno Fernandes. A aplicacao e composta por uma landing page com navegacao por secoes, uma pagina dedicada para o projeto "Concurso Facil" e links externos para curriculo, redes sociais e demonstracao.
 
 **Objetivo funcional:**
 
 - consolidar apresentacao profissional em um unico site
 - comunicar experiencias relevantes de carreira e formacao
-- exibir projetos com navegacao entre visao resumida e visao detalhada
+- exibir projetos com visao resumida na home e visao detalhada em pagina dedicada
 - facilitar contato por email, WhatsApp, LinkedIn, GitHub e curriculo em PDF
 
 **Tecnologias principais (resumo):**
@@ -39,7 +39,7 @@ Portfolio pessoal em frontend unico, construido com Next.js, para apresentar ide
 **Observacao importante de contexto:**
 
 - o projeto atual **nao esta em Angular**
-- caso a intencao futura seja migrar ou recriar em Angular, isso ainda nao aparece no codigo versionado
+- a arquitetura ativa hoje esta migrando para `src/`, mas essa migracao ainda nao terminou por completo
 
 ---
 
@@ -48,9 +48,9 @@ Portfolio pessoal em frontend unico, construido com Next.js, para apresentar ide
 ### Frontend
 
 - Framework: Next.js 16.1.6 com App Router
-- Linguagem: TypeScript com `strict: true`
+- Linguagem: TypeScript
 - UI: React 19.2.3
-- Estilizacao: Tailwind CSS 4 via `@import "tailwindcss"`
+- Estilizacao: Tailwind CSS 4
 - Fontes: `next/font/google` com Geist, Geist Mono e Bebas Neue
 - Animacoes: GSAP
 - Carrossel: `embla-carousel-react`
@@ -76,42 +76,64 @@ Portfolio pessoal em frontend unico, construido com Next.js, para apresentar ide
 
 ```text
 .
-|-- app/
-|   |-- layout.tsx
-|   |-- page.tsx
-|   |-- page_bacup.tsx
-|   |-- globals.css
-|   |-- fonts.ts
-|   `-- projetos/
-|       `-- concurso-facil/
-|           `-- page.tsx
-|-- components/
-|   |-- About/
-|   |-- Contact/
-|   |-- Experience/
-|   |-- Hero/
-|   |-- Navbar/
-|   |-- Projects/
-|   `-- TechCarousel/
+|-- src/
+|   |-- app/
+|   |   |-- layout.tsx
+|   |   |-- page.tsx
+|   |   |-- globals.css
+|   |   |-- fonts.ts
+|   |   `-- projetos/
+|   |       `-- concurso-facil/
+|   |           `-- page.tsx
+|   |-- components/
+|   |   |-- home/
+|   |   |   |-- About/
+|   |   |   |-- Experience/
+|   |   |   |-- Hero/
+|   |   |   |-- Projects/
+|   |   |   `-- TechCarousel/
+|   |   |-- layout/
+|   |   |   |-- FooterContact.tsx
+|   |   |   `-- Navbar.tsx
+|   |   |-- project/
+|   |   |   |-- ProjectHero.tsx
+|   |   |   |-- ProjectLinks.tsx
+|   |   |   `-- ProjectOverview.tsx
+|   |   `-- shared/
+|   |       |-- SectionTitle.tsx
+|   |       `-- Tag.tsx
+|   |-- data/
+|   |   `-- Estado atual: existe a pasta, mas nao ha arquivos ativos identificados
+|   |-- lib/
+|   |-- types/
+|   `-- components/animations/
 |-- data/
 |   `-- projects.ts
 |-- public/
-|   |-- imagens do portfolio
-|   `-- CurriculoBrenoFernandes.pdf
-|-- package.json
+|   |-- images/
+|   |-- icons/
+|   |-- CurriculoBrenoFernandes.pdf
+|   `-- imagens principais ainda na raiz de public/
+|-- legacy/
+|   `-- page_bacup.tsx
 |-- next.config.ts
+|-- package.json
 |-- tsconfig.json
-`-- README.md
+|-- README.md
+`-- agent.md
 ```
 
 **Leitura da estrutura:**
 
-- `app/` -> rotas, layout global, estilos e ponto de entrada do App Router
-- `components/` -> secoes visuais e componentes reutilizados da landing page
-- `data/` -> fonte de dados local dos cards de projeto
-- `public/` -> imagens, curriculo PDF e assets estaticos
-- `app/projetos/concurso-facil/` -> pagina dedicada do projeto em destaque
-- `app/page_bacup.tsx` -> arquivo legado/backup, nao referenciado pela aplicacao atual
+- `src/app/` -> camada ativa de rotas, layout global, estilos e ponto de entrada do App Router
+- `src/components/home/` -> secoes exclusivas da landing page principal
+- `src/components/layout/` -> estrutura global compartilhada, hoje com `Navbar` e `FooterContact`
+- `src/components/project/` -> blocos reutilizaveis de paginas detalhadas de projeto
+- `src/components/shared/` -> componentes visuais reutilizaveis de baixo acoplamento
+- `data/projects.ts` -> fonte de dados ativa da grade de projetos da home
+- `src/data/` -> pasta reservada para futura consolidacao de conteudo, mas ainda nao e a fonte principal ativa
+- `public/` -> assets estaticos, PDF do curriculo e imagens do portfolio
+- `legacy/page_bacup.tsx` -> arquivo legado/backup, fora da app ativa, mas ainda versionado
 
 ---
 
@@ -150,6 +172,8 @@ npm run dev
 
 **Observacoes importantes:**
 
+- a aplicacao ativa esta em `src/app`, nao mais em `app/`
+- `npm run dev` deve servir a home normalmente em `/`
 - a aplicacao depende de fontes remotas do Google via `next/font/google`
 - em ambientes sem acesso externo, `npm run build` pode falhar ao buscar Geist, Geist Mono e Bebas Neue
 - nao ha `.env` obrigatorio mapeado no repositorio
@@ -162,25 +186,28 @@ npm run dev
 
 - arquitetura de frontend unico, sem backend acoplado
 - conteudo majoritariamente estatico, renderizado a partir de componentes React
-- dados dos projetos mantidos localmente em `data/projects.ts`
+- home e pagina dedicada compartilham moldura global via `src/app/layout.tsx`
 - navegacao hibrida entre scroll interno na home e rota dedicada para um projeto especifico
+- a arquitetura esta em transicao: estrutura visual migrou para `src/`, mas parte do conteudo ainda permanece fora de `src/data`
 
 ### Frontend
 
-- `app/page.tsx` compoe a home a partir de secoes independentes
-- `Navbar` usa `useRouter` e `usePathname` para decidir entre scroll local e navegacao com hash
-- a propria `app/page.tsx` escuta hash da URL e faz `scrollIntoView` apos render para suportar retorno a home
-- `ProjectsGrid` controla modal de projeto por estado local (`selectedProject`)
-- `ProjectModal` bloqueia scroll do `body` enquanto o modal esta aberto
-- `TechCarousel` usa Embla para navegacao lateral de tecnologias
-- secoes `Hero`, `EngNet` e `Serpro` usam GSAP + `IntersectionObserver` para efeitos de entrada e enfase
+- `src/app/layout.tsx` concentra a moldura global da aplicacao e renderiza `Navbar`, `{children}` e `FooterContact`
+- `src/app/page.tsx` compoe a home a partir de `Hero`, `About`, experiencias, tecnologias e projetos
+- `src/app/page.tsx` escuta hash da URL e faz `scrollIntoView` apos render para suportar retorno a secoes da home
+- `src/components/layout/Navbar.tsx` usa `useRouter` e `usePathname` para decidir entre scroll local e navegacao com hash
+- `src/components/home/Projects/ProjectsGrid.tsx` controla modal de projeto por estado local (`selectedProject`)
+- `src/components/home/Projects/ProjectModal.tsx` bloqueia scroll do `body` enquanto o modal esta aberto
+- `src/components/project/` ja comecou a quebrar a pagina do Concurso Facil em blocos menores (`ProjectHero`, `ProjectOverview`, `ProjectLinks`)
+- `src/components/shared/SectionTitle.tsx` e `src/components/shared/Tag.tsx` representam a primeira camada de reutilizacao visual
 
 **Consequencias:**
 
-- estado e todo em memoria do cliente
-- refresh fecha modal e reseta interacoes como "Saiba mais"
+- estado de interface e mantido em memoria no cliente
+- refresh fecha modal e reseta interacoes locais
 - nao existe CMS, painel administrativo ou persistencia
-- inclusao de novos projetos depende de alteracao manual no codigo
+- inclusao de novos projetos ainda depende de alteracao manual no codigo
+- parte do conteudo ainda esta hardcoded em componentes ou na propria pagina dedicada
 
 ### Backend
 
@@ -193,8 +220,7 @@ npm run dev
 - Instagram
 - WhatsApp (`wa.me`)
 - PDF de curriculo hospedado em `public/`
-- demo externa do projeto Concurso Facil em Vercel
-- repositorios externos do ecossistema Concurso Facil
+- demo externa do projeto Concurso Facil
 - Google Fonts via `next/font/google`
 
 ---
@@ -204,10 +230,11 @@ npm run dev
 ### Fluxo 1 - Acesso a home e navegacao por secoes
 
 1. usuario acessa `/`
-2. `app/page.tsx` renderiza `Navbar`, `Hero`, `About`, experiencias, tecnologias, projetos e contato
-3. clique na navbar tenta localizar a secao na mesma pagina
-4. se o usuario estiver fora da home, a navbar redireciona para `/#id`
-5. apos a navegacao, `app/page.tsx` le o hash e executa scroll suave para o elemento alvo
+2. `src/app/layout.tsx` renderiza `Navbar`, conteudo da rota e `FooterContact`
+3. `src/app/page.tsx` renderiza `Hero`, `About`, experiencias, tecnologias e projetos
+4. clique na navbar tenta localizar a secao na mesma pagina
+5. se o usuario estiver fora da home, a navbar redireciona para `/#id`
+6. apos a navegacao, `src/app/page.tsx` le o hash e executa scroll suave para o elemento alvo
 
 ### Fluxo 2 - Exploracao de projeto na grade
 
@@ -220,14 +247,14 @@ npm run dev
 ### Fluxo 3 - Pagina detalhada do Concurso Facil
 
 1. usuario chega a rota `/projetos/concurso-facil`
-2. a pagina renderiza hero proprio, metricas, descricao, arquitetura, links de repositorio e CTA de demonstracao
-3. clique em "Acessar demonstracao" abre modal explicativo
-4. usuario pode seguir para a demo externa hospedada na Vercel
+2. a pagina compoe `ProjectHero`, `ProjectOverview` e `ProjectLinks`
+3. a propria pagina ainda controla um modal local para a demonstracao
+4. usuario pode seguir para a demo externa hospedada fora do portfolio
 
 ### Fluxo 4 - Contato
 
 1. usuario navega ate a secao `contato`
-2. escolhe um dos canais disponiveis
+2. `FooterContact` exibe os canais disponiveis
 3. a acao redireciona para `mailto:`, `wa.me`, rede social externa ou curriculo PDF
 
 ---
@@ -251,7 +278,7 @@ npm run dev
 
 - na home, a navbar usa scroll suave para secoes existentes
 - fora da home, a navbar redireciona para `/#id` usando `router.push(..., { scroll: false })`
-- a secao de contato tem tratamento especial para tentar scroll direto antes do fallback
+- a secao de contato ainda tem tratamento especial na logica da navbar
 - o item "Projetos" na navbar possui dropdown com atalho para a rota dedicada do Concurso Facil
 
 ### Comportamentos importantes
@@ -259,8 +286,8 @@ npm run dev
 - header muda visualmente apos scroll vertical acima de 50px
 - `EngNet` e `Serpro` expandem conteudo com botao "Saiba mais"
 - `ProjectsGrid` abre modal de projeto em overlay
-- pagina de `Concurso Facil` possui segundo modal para aviso da demonstracao
-- existe um arquivo `app/page_bacup.tsx`, mas ele nao faz parte do fluxo atual de navegacao
+- pagina de `Concurso Facil` possui modal proprio para aviso da demonstracao
+- existe um arquivo `legacy/page_bacup.tsx`, mas ele nao faz parte do fluxo atual de navegacao
 
 ---
 
@@ -275,7 +302,7 @@ npm run dev
 - `GET /` -> entrega a landing page do portfolio
 - `GET /projetos/concurso-facil` -> entrega a pagina dedicada do projeto
 - `GET /CurriculoBrenoFernandes.pdf` -> disponibiliza download ou abertura do curriculo
-- `GET /<assets em public>` -> imagens estaticas do portfolio
+- `GET /<assets em public>` -> imagens e arquivos estaticos do portfolio
 
 ### Exemplo de contrato de dados interno
 
@@ -322,7 +349,7 @@ type Project = {
 - apenas projetos cadastrados em `data/projects.ts` aparecem na grade principal
 - apenas projetos com `hasPage` e `href` exibem CTA para pagina dedicada no modal
 - contato e feito exclusivamente por redirecionamento para servicos externos
-- o item de dropdown da navbar para "Concurso Facil" esta hardcoded
+- o dropdown da navbar para projetos ainda esta hardcoded
 
 ---
 
@@ -331,21 +358,23 @@ type Project = {
 - projetos: definidos manualmente em `data/projects.ts`
 - midias: armazenadas em `public/`
 - curriculo: `public/CurriculoBrenoFernandes.pdf`
-- tecnologias do carrossel: definidas inline em `components/TechCarousel/TechCarousel.tsx`
-- textos institucionais e experiencias: definidos inline nos componentes
+- tecnologias do carrossel: `Estado atual: ainda definidas inline em src/components/home/TechCarousel/TechCarousel.tsx`
+- textos institucionais e experiencias: `Estado atual: ainda definidos majoritariamente nos componentes`
+- `src/data/`: `Estado atual: estrutura preparada, mas ainda nao consolidada como fonte ativa do projeto`
 
 ---
 
 ## 11. Hurdles (armadilhas do projeto)
 
 1. O projeto nao esta em Angular. Se alguem entrar assumindo Angular, vai perder tempo ate perceber que a base atual e Next.js + React.
-2. `app/layout.tsx` ainda usa metadados padrao de `create-next-app` (`Create Next App`), o que nao reflete a identidade do portfolio.
-3. `app/projetos/concurso-facil/page.tsx` apresenta texto com problema de encoding (`FÃ¡cil`, `organizaÃ§Ã£o`), impactando percepcao de qualidade.
-4. `app/page_bacup.tsx` continua versionado e entra no `eslint`, gerando warnings em arquivo que aparenta ser legado.
-5. `next.config.ts` usa `images.domains`, configuracao ja marcada como deprecated pelo Next 16.
-6. O `build` depende de acesso a Google Fonts; em ambientes restritos ou CI sem saida para internet, a compilacao falha.
-7. Alguns comportamentos de navegacao sao hardcoded, como o dropdown de projetos e o tratamento especial da secao de contato.
-8. Nao ha testes automatizados, entao regressos visuais e de navegacao dependem de validacao manual.
+2. O layout ativo esta em `src/app/layout.tsx`, mas os metadados ainda usam valores padrao de `create-next-app` (`Create Next App`), o que nao reflete a identidade do portfolio.
+3. A pagina `src/app/projetos/concurso-facil/page.tsx` ainda merece revisao textual e pode concentrar hardcodes especificos do projeto.
+4. `legacy/page_bacup.tsx` continua versionado e tende a aparecer em lint/warnings mesmo sem participar da aplicacao principal.
+5. `build` depende de acesso a Google Fonts; em ambientes restritos ou CI sem saida para internet, a compilacao pode falhar.
+6. Alguns comportamentos de navegacao continuam hardcoded, como o dropdown de projetos e o tratamento especial da secao de contato.
+7. A arquitetura visual ja migrou para `src/`, mas a camada de dados ainda esta parcialmente fora dela, o que cria um estado intermediario de transicao.
+8. Assets principais ainda estao na raiz de `public/`, apesar de ja existirem diretorios `public/images/` e `public/icons`.
+9. Nao ha testes automatizados, entao regressos visuais e de navegacao dependem de validacao manual.
 
 ---
 
@@ -360,8 +389,9 @@ type Project = {
 
 **Estado observado nesta analise:**
 
-- `npm run lint` executou com sucesso, mas com 8 warnings
-- os warnings estao concentrados em `app/page_bacup.tsx`
+- `npm run dev` iniciou normalmente depois da remocao da pasta `app/` da raiz
+- `npm run lint`: `Estado atual: nao reexecutado nesta revisao do documento`
+- `npm run build`: pode falhar em ambientes sem acesso externo por dependencia de `next/font/google`
 
 ### Backend
 
@@ -371,16 +401,21 @@ type Project = {
 
 ## 13. Estado operacional atual
 
+### Dev server
+
+- status: deve responder em `http://localhost:3000`
+- observacao: a aplicacao ativa e servida a partir de `src/app`
+
 ### Lint
 
-- status: executa com sucesso
-- observacao: ha warnings em arquivo de backup nao usado pela aplicacao principal
+- status: `Estado atual: nao revalidado nesta revisao`
+- observacao: historicamente o principal ruido vinha do arquivo legado `page_bacup.tsx`
 
 ### Build
 
-- status: nao concluido no ambiente desta analise
+- status: instavel em ambientes sem internet
 - causa observada: falha ao buscar fontes Google via `next/font/google`
-- inferencia segura: o projeto possui dependencia externa de rede para compilar como esta
+- inferencia segura: o projeto ainda possui dependencia externa de rede para compilar como esta
 
 ---
 
@@ -397,8 +432,9 @@ type Project = {
 - CI/CD versionado no repositorio: `Estado atual: nao identificado`
 - CMS/painel administrativo: `Estado atual: nao existe`
 - internacionalizacao: `Estado atual: nao existe`
-- tema configuravel: `Estado atual: nao existe, apesar de estilos citarem dark colors em alguns trechos`
+- tema configuravel: `Estado atual: nao existe`
 - acessibilidade formal/documentada: `Estado atual: nao identificada politica ou suite de validacao`
+- consolidacao completa em `src/data/`: `Estado atual: nao concluida`
 - Angular: `Estado atual: nao existe neste repositorio`
 
 ---
@@ -409,6 +445,7 @@ Atualizar este documento quando mudar:
 
 - rotas do App Router
 - estrutura de `data/projects.ts`
+- eventual ativacao real de `src/data/`
 - links publicos de contato
 - assets relevantes em `public/`
 - fontes e estrategia de build
@@ -422,20 +459,23 @@ Atualizar este documento quando mudar:
 
 Ordem recomendada:
 
-1. ler este `Agent.md`
+1. ler este `agent.md`
 2. ler `README.md`
-3. revisar `app/page.tsx`
-4. revisar `components/Navbar/Navbar.tsx`
-5. revisar `data/projects.ts`
-6. revisar `app/projetos/concurso-facil/page.tsx`
+3. revisar `src/app/page.tsx`
+4. revisar `src/app/layout.tsx`
+5. revisar `src/components/layout/Navbar.tsx`
+6. revisar `src/components/home/Projects/ProjectsGrid.tsx`
+7. revisar `data/projects.ts`
+8. revisar `src/app/projetos/concurso-facil/page.tsx`
 
 **Heuristica:**
 
-- problema de navegacao/scroll -> `Navbar` + `app/page.tsx`
-- problema em projetos/modais -> `components/Projects/`
+- problema de navegacao/scroll -> `src/components/layout/Navbar.tsx` + `src/app/page.tsx`
+- problema em projetos/modais -> `src/components/home/Projects/`
+- problema em pagina dedicada -> `src/app/projetos/concurso-facil/page.tsx` + `src/components/project/`
 - problema em conteudo textual -> componentes de secao ou `data/projects.ts`
-- problema de build -> `app/layout.tsx`, `app/fonts.ts` e dependencia de `next/font/google`
-- problema de identidade/SEO -> `app/layout.tsx`
+- problema de build -> `src/app/layout.tsx`, `src/app/fonts.ts` e dependencia de `next/font/google`
+- problema de identidade/SEO -> `src/app/layout.tsx`
 
 ---
 
@@ -448,6 +488,7 @@ Sempre registrar:
 - novas rotas
 - mudancas de conteudo relevante
 - mudancas no contrato de `data/projects.ts`
+- passos concluidos da migracao arquitetural para `src/`
 - decisoes arquiteturais
 - riscos tecnicos conhecidos
-- problemas recorrentes observados em lint, build ou navegacao
+- problemas recorrentes observados em `dev`, `lint`, `build` ou navegacao

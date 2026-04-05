@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { gsap } from "gsap"
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa"
-import { bebas } from "@/app/fonts"
+import { bebas } from "@/src/app/fonts"
 
 export default function Hero() {
 

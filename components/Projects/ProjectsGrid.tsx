@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { bebas } from "@/app/fonts"
+import { bebas } from "@/src/app/fonts"
 import { projects, Project } from "@/data/projects"
 import ProjectCard from "./ProjectCard"
 import ProjectModal from "./ProjectModal"

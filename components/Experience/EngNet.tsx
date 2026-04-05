@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { gsap } from "gsap"
-import { bebas } from "@/app/fonts"
+import { bebas } from "@/src/app/fonts"
 
 export default function EngNet() {
 

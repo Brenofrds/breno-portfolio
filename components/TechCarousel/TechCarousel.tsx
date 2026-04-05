@@ -3,7 +3,7 @@
 import { useCallback } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
-import { bebas } from "@/app/fonts"
+import { bebas } from "@/src/app/fonts"
 
 import {
   SiPhp,

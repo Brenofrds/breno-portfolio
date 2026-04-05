@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { FaGithub, FaLinkedin, FaChevronLeft, FaChevronRight, FaInstagram, FaFileAlt, FaWhatsapp } from "react-icons/fa";
 import { gsap } from "gsap";
 import Image from "next/image";
-import { bebas } from "./fonts";
+import { bebas } from "@/src/app/fonts";
 import Link from "next/link";
 
 import useEmblaCarousel from "embla-carousel-react";

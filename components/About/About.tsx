@@ -1,4 +1,4 @@
-import { bebas } from "@/app/fonts"
+import { bebas } from "@/src/app/fonts"
 
 export default function About() {
 

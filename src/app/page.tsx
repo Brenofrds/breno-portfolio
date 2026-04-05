@@ -4,12 +4,12 @@ import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
 import Navbar from "@/components/Navbar/Navbar"
-import Hero from "@/components/Hero/Hero"
-import About from "@/components/About/About"
-import EngNet from "@/components/Experience/EngNet"
-import Serpro from "@/components/Experience/Serpro"
-import TechCarousel from "@/components/TechCarousel/TechCarousel"
-import ProjectsGrid from "@/components/Projects/ProjectsGrid"
+import Hero from "@/src/components/home/Hero/Hero"
+import About from "@/src/components/home/About/About"
+import EngNet from "@/src/components/home/Experience/EngNet"
+import Serpro from "@/src/components/home/Experience/Serpro"
+import TechCarousel from "@/src/components/home/TechCarousel/TechCarousel"
+import ProjectsGrid from "@/src/components/home/Projects/ProjectsGrid"
 import Contact from "@/components/Contact/Contact"
 
 export default function Home() {

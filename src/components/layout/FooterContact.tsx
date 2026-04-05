@@ -4,7 +4,7 @@ import Image from "next/image"
 import { FaGithub, FaLinkedin, FaInstagram, FaFileAlt, FaWhatsapp } from "react-icons/fa"
 import { bebas } from "@/src/app/fonts"
 
-export default function Contact() {
+export default function FooterContact() {
 
   return (
 

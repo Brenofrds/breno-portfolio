@@ -3,14 +3,12 @@
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
-import Navbar from "@/components/Navbar/Navbar"
 import Hero from "@/src/components/home/Hero/Hero"
 import About from "@/src/components/home/About/About"
 import EngNet from "@/src/components/home/Experience/EngNet"
 import Serpro from "@/src/components/home/Experience/Serpro"
 import TechCarousel from "@/src/components/home/TechCarousel/TechCarousel"
 import ProjectsGrid from "@/src/components/home/Projects/ProjectsGrid"
-import Contact from "@/components/Contact/Contact"
 
 export default function Home() {
 
@@ -38,14 +36,12 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <Hero />
       <About />
       <EngNet />
       <Serpro />
       <TechCarousel />
       <ProjectsGrid />
-      <Contact />
     </>
   )
 }

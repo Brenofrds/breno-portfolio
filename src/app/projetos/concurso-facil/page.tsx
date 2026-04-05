@@ -3,16 +3,12 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import Navbar from "@/components/Navbar/Navbar"
-import Contact from "@/components/Contact/Contact"
 
 export default function ConcursoFacilPage() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
 
   return (
     <>
-      <Navbar />
-
       {/* HERO DO PROJETO */}
       <section className="relative bg-gradient-to-b from-[#061226] via-[#0e1a2f] to-[#0e1a2f] pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -231,8 +227,6 @@ export default function ConcursoFacilPage() {
           </div>
         </div>
       )}
-
-      <Contact />
     </>
   )
 }

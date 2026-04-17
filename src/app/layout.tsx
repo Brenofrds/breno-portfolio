@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Portfólio Breno Fernandes", 
-  description: "Este é o portfólio de Breno Fernandes, apresentando suas experiências, projetos e mais.",
+  description: "Este é o meu portfólio, apresento minhas experiências, projetos e mais.",
 };
 
 export default function RootLayout({
